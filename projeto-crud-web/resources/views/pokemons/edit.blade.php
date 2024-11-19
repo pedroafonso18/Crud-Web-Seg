@@ -24,6 +24,13 @@
                 <label for="pontos_de_poder" class="form-label">StatBase</label>
                 <input type="number" class="form-control" id="pontos_de_poder" name="pontos_de_poder" placeholder="PP" value="{{ $pokemon->pontos_de_poder }}" required>
             </div>
+            <label for="trainer_id" class="form-label">Treinador</label>
+            <select id="trainer_id" name="trainer_id" class="form-control">
+                <option selected>Selecione um treinador</option>
+                @foreach($trainers as $trainer)
+                    <option value="{{$trainer->id}}"> {{$trainer->nome}}</option>
+                @endforeach
+            </select> 
             <button type="submit" class="btn btn-primary">Editar Pokémon</button>
         </form>
     </div>

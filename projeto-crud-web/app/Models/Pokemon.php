@@ -7,9 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pokemon extends Model
 {
-    protected $fillable = [
-        "nome",
-        "tipo",
-        "pontos_de_poder"
-    ];
+    use HasFactory;
+
+    protected $fillable = ['nome', 'tipo', 'pontos_de_poder', 'trainer_id'];
+
+    public function trainer()
+    {
+        return $this->belongsTo(Trainer::class, 'trainer_id');
+    }
 }

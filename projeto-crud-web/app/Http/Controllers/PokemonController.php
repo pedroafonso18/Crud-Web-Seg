@@ -16,7 +16,10 @@ class PokemonController extends Controller
 
 public function create()
 {
-    return view('pokemons.create');
+        $trainers = \App\Models\Trainer::all();
+    
+    // Passar os treinadores para a view
+    return view('pokemons.create', compact('trainers'));
 }
 
 public function store(Request $request)
@@ -28,7 +31,8 @@ public function store(Request $request)
 public function edit($id)
 {
     $pokemon = Pokemon::findOrFail($id);
-    return view('pokemons.edit', compact('pokemon'));
+    $trainers = \App\Models\Trainer::all();
+    return view('pokemons.edit', compact('pokemon', 'trainers'));
 }
 
 public function update(Request $request, $id)

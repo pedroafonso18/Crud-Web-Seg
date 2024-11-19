@@ -7,25 +7,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <h1 class="text-center my-4">Lista de Pokémon!</h1>
+    <h1 class="text-center my-4">Lista de Trainer!</h1>
     <div class="container">
         <div class="row justify-content-center">
-            @foreach($pokemons as $pokemon)
+            @foreach($trainers as $trainer)
                 <div class="col-md-3 mb-4">
                     <div class="card text-center border-secondary">
                         <div class="card-body">
-                            <h3 class="card-title">{{ $pokemon->nome }}</h3>
-                            <p class="card-text">Tipo: {{ $pokemon->tipo }}</p>
-                            <p class="card-text">Pontos de Poder: {{ $pokemon->pontos_de_poder }}</p>
-                        
-                            @if(isset($pokemon->trainer))
-                                <p class="card-text">Trainer: {{$pokemon->trainer->nome}}</p>
-                            @else
-                            <p class="card-text">Trainer Id:</p>
-                            @endif
-
-                            <a href="{{ url('pokemons/'.$pokemon->id.'/edit') }}" class="btn btn-primary mb-2">Edit</a>
-                            <form action="{{ url('pokemons/'.$pokemon->id) }}" method="POST">
+                            <h3 class="card-title">{{ $trainer->nome }}</h3>
+                            <h3 class="card-title">{{$trainer->id}}</h3>
+                            <a href="{{ url('trainers/'.$trainer->id.'/edit') }}" class="btn btn-primary mb-2">Edit</a>
+                            <form action="{{ url('trainers/'.$trainer->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
